@@ -5,11 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ref</title>
   <style>
+    /* Your custom font */
+    @font-face {
+      font-family: "PEELMETYPE";
+      src: url("fonts/PEELMETYPE.otf") format("opentype");
+    }
+
     body {
       margin: 0;
       padding: 24px 0;
       font-family: system-ui, sans-serif;
       background: #fff;
+    }
+
+    /* "References" heading, top centered */
+    .page-title {
+      font-family: "PEELMETYPE", system-ui, sans-serif;
+      text-align: center;
+      font-weight: normal;
+      font-size: clamp(28px, 5vw, 64px);
+      margin: 0 0 clamp(16px, 4vh, 48px);
     }
 
     /* 4 horizontal rows of images */
@@ -19,26 +34,22 @@
       gap: clamp(16px, 4vh, 48px);
     }
     .row {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;   /* spreads the images evenly across the full width */
-  align-items: center;
-  padding: 0 clamp(12px, 3vw, 32px);
-}
-.tile img {
-  display: block;
-  height: var(--img-height, clamp(36px, 7vw, 150px));   /* the script sets this number */
-  width: auto;                                          /* each image keeps its own shape */
-}
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 clamp(12px, 3vw, 32px);
+    }
     .tile {
       flex: 0 0 auto;
       display: block;
       line-height: 0;
+      cursor: pointer;
     }
     .tile img {
       display: block;
-      height: var(--img-height);
-      width: auto;                              /* each image keeps its own shape */
+      height: var(--img-height, clamp(36px, 7vw, 150px));
+      width: auto;
     }
 
     /* The second cursor */
@@ -46,7 +57,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 20px;                              /* cursor size */
+      width: 20px;
       height: auto;
       pointer-events: none;
       z-index: 9999;
@@ -54,45 +65,46 @@
       transition: transform .12s ease-out;
     }
     @media (hover: none) { #cursor2 { display: none !important; } }
-    /* Pop-up viewer: clicked image and its partner side by side */
-#viewer {
-  width: 100vw;
-  height: 100vh;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  padding: 16px;
-  border: 0;
-  background: rgba(255,255,255,.96);
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(8px, 2vw, 24px);
-}
-#viewer[open] { display: flex; }
-#viewer img {
-  display: block;
-  max-width: calc(50% - 12px);
-  max-height: 90vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  cursor: default;
-}
-.tile { cursor: pointer; }
 
-/* Narrow portrait screens: stack them instead */
-@media (max-width: 600px) {
-  #viewer[open] { flex-direction: column; }
-  #viewer img { max-width: 100%; max-height: calc(45vh - 12px); }
-}
+    /* Pop-up viewer */
+    #viewer {
+      width: 100vw;
+      height: 100vh;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: 16px;
+      border: 0;
+      background: rgba(255,255,255,.96);
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(8px, 2vw, 24px);
+    }
+    #viewer[open] { display: flex; }
+    #viewer img {
+      display: block;
+      max-width: calc(50% - 12px);
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      cursor: default;
+    }
+
+    @media (max-width: 600px) {
+      #viewer[open] { flex-direction: column; }
+      #viewer img { max-width: 100%; max-height: calc(45vh - 12px); }
+    }
   </style>
-
 </head>
 <body>
 <a href="index.html" style="display:inline-block; margin:0 clamp(12px,3vw,32px) 24px; line-height:0;">
   <img src="images/backbutton.png" alt="Back" style="width:clamp(40px, 8vw, 120px); height:auto; display:block;">
 </a>
+
+  <h1 class="page-title">References</h1>
+
   <div class="rows">
 
     <!-- ROW 1 -->
@@ -105,7 +117,6 @@
       <a class="tile" href="#"><img src="images/rev.png" alt=""></a>
       <a class="tile" href="#"><img src="images/eFe.png" alt=""></a>
       <a class="tile" href="#"><img src="images/hzdt.png" alt=""></a>
-      
     </div>
 
     <!-- ROW 2 -->
@@ -115,10 +126,9 @@
       <a class="tile" href="#"><img src="images/AI4.png" alt=""></a>
       <a class="tile" href="#"><img src="images/AI3.png" alt=""></a>
       <a class="tile" href="#"><img src="images/AI7.png" alt=""></a>
-       <a class="tile" href="#"><img src="images/tbarhui.png" alt=""></a>
-       <a class="tile" href="#"><img src="images/hthjsg.png" alt=""></a>
-       <a class="tile" href="#"><img src="images/hjkdsh.png" alt=""></a>
-      
+      <a class="tile" href="#"><img src="images/tbarhui.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/hthjsg.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/hjkdsh.png" alt=""></a>
     </div>
 
     <!-- ROW 3 -->
@@ -131,23 +141,22 @@
       <a class="tile" href="#"><img src="images/IMG_3585 NO.png" alt=""></a>
       <a class="tile" href="#"><img src="images/IMG_5517 NONO.png" alt=""></a>
       <a class="tile" href="#"><img src="images/Untitled-2 NONO.png" alt=""></a>
-     
     </div>
 
     <!-- ROW 4 -->
     <div class="row" data-row="4">
-     <a class="tile" href="#"><img src="images/dfdf.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/IMG_5093NONO.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/IMG_7306 NONO.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/jkj.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/NONONONON.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/wee.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/Untitled-1 NO.png" alt=""></a>
-           <a class="tile" href="#"><img src="images/uuu.png" alt=""></a>
-     
+      <a class="tile" href="#"><img src="images/dfdf.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/IMG_5093NONO.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/IMG_7306 NONO.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/jkj.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/NONONONON.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/wee.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/Untitled-1 NO.png" alt=""></a>
+      <a class="tile" href="#"><img src="images/uuu.png" alt=""></a>
     </div>
 
   </div>
+
 <dialog id="viewer" aria-label="Image viewer">
   <img id="viewer-a" src="" alt="">
   <img id="viewer-b" src="" alt="">
@@ -172,7 +181,7 @@
         const index = Math.max(targetTiles.length - 1 - tiles.indexOf(tile), 0);
         const t = targetTiles[index].getBoundingClientRect();
 
-        // Mirror where you are inside the image (left/right and up/down)
+        // Mirror where you are inside the image
         const r = tile.getBoundingClientRect();
         const fx = 1 - (e.clientX - r.left) / r.width;
         const fy = 1 - (e.clientY - r.top) / r.height;
@@ -189,10 +198,10 @@
         tile.addEventListener('mouseleave', () => { cursor.style.display = 'none'; });
       });
     }
-    
   </script>
+
 <script>
-  const FILL = 0.85;      // how much of the row the images take up (the rest becomes even gaps)
+  const FILL = 0.85;      // how much of the row the images take up
   const MAX_HEIGHT = 260; // biggest the images are allowed to get, in px
 
   function fitRows() {
@@ -202,10 +211,8 @@
       const cs = getComputedStyle(row);
       const width = row.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
 
-      // Total width of the row if every image were 1px tall
       const total = imgs.reduce((sum, img) => sum + (img.naturalWidth / img.naturalHeight || 1), 0);
 
-      // The height at which this row's images fill the chosen share of the width
       best = Math.min(best, (width * FILL) / total);
     });
     document.documentElement.style.setProperty('--img-height', best + 'px');
@@ -214,13 +221,12 @@
   window.addEventListener('load', fitRows);
   window.addEventListener('resize', fitRows);
 </script>
+
 <script>
   const viewer = document.getElementById('viewer');
   const viewerA = document.getElementById('viewer-a');
   const viewerB = document.getElementById('viewer-b');
 
-  // Same pairing the second cursor uses: row 1 <-> 4, row 2 <-> 3,
-  // and 1st image <-> last image in the target row
   const pairRow = { 1: 4, 2: 3, 3: 2, 4: 1 };
 
   function partnerOf(tile) {
@@ -235,7 +241,7 @@
 
   document.querySelectorAll('.tile').forEach(tile => {
     tile.addEventListener('click', e => {
-      e.preventDefault();                          // stops the # link from jumping
+      e.preventDefault();
       const partner = partnerOf(tile);
       viewerA.src = tile.querySelector('img').src;
       if (partner) {
@@ -249,7 +255,6 @@
     });
   });
 
-  // Click anywhere that isn't an image to close (Esc also works)
   viewer.addEventListener('click', e => {
     if (e.target !== viewerA && e.target !== viewerB) viewer.close();
   });
