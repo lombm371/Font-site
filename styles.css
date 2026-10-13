@@ -1,0 +1,10 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;               /* size of the mirrored cursor */
+  height: auto;
+  pointer-events: none;      /* never blocks clicks */
+  z-index: 9999;
+  display: none;             /* hidden until the mouse moves */
+}
